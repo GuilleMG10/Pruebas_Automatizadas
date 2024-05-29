@@ -1,1 +1,1 @@
-cucumber features\archivo.feature
+cucumber features\1prueba.feature
