@@ -1,0 +1,14 @@
+Feature: As a internet user
+         I want to use the GMO OnLine Catalog
+         so I test that it works correctly
+
+Scenario: Search for the GMO OnLine Catalog       
+  Given I am on the Google homepage
+  When I search for "GMO OnLine - Welcome to Green Mountain Outpost"
+  Then I will click the "GMO OnLine - Welcome to Green Mountain Outpost" link
+  
+Scenario: See for the GMO OnLine Catalog
+  Given I am on GMO OnLine Catalog page
+  When Press the "bSubmit" button     
+  Then I should see title text "OnLine Catalog"
+
