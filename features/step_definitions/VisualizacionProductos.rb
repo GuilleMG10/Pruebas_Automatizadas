@@ -15,3 +15,14 @@ expected_text = find('body > p:nth-child(4) > font > em').text
 puts "ONLY FOR TEST PURPOSES: #{expected_text}"
 expect(expected_text).to eq('Our best 3 person backpack dome tent')
 end
+
+When('I click {string} product') do |product_name|
+  product_link = find('strong', text: product_name)
+  product_link.click
+end
+
+Then('I should see details {string} of selected product {string}') do |product_details, css_selector|
+  expected_text = find(css_selector).text
+  puts "ONLY FOR TEST PURPOSES: #{expected_text}"
+  expect(expected_text).to eq(product_details)
+end
