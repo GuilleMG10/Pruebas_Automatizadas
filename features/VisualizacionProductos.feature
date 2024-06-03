@@ -1,7 +1,7 @@
 Feature: Testing GMO Post
   As an internet user
   I want to interact with the demo GMO Post website
-  So I can verify its functionality
+  So I can view details of available products
 
 Scenario: Get products and view details of product 0 
   Given I am on the GMO Post homepage

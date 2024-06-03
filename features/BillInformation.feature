@@ -1,3 +1,5 @@
-Feature: As a internet user
-         I want to use the google search engine
-         so I test that it works correctly
+Feature: Bill Information
+    As an internet user
+    I want to place an order in the demo GMO Post website
+    so I test bill information works correctly
+
