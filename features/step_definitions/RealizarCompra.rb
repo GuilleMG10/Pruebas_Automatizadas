@@ -44,6 +44,18 @@ Then('quantity of all the products must be :') do |table|
         check_product_quantity(product_name, quantity)
     end
 end
+Then('I should see an alert {string}') do |expected_alert_text|
+    # Espera a que la alerta aparezca
+    page.driver.browser.switch_to.alert.text == expected_alert_text
+    alert = page.driver.browser.switch_to.alert
+    actual_alert_text = alert.text
+    if actual_alert_text == expected_alert_text
+        puts "El mensaje de la alerta es correcto: #{actual_alert_text}"
+        alert.accept # O alert.dismiss si deseas rechazar la alerta
+    else
+        raise "El mensaje de la alerta es incorrecto. Se esperaba '#{expected_alert_text}' pero se encontró '#{actual_alert_text}'"
+    end
+end
 def update_product_quantity(product_name, new_quantity)
 counter = 2
     while counter < 7

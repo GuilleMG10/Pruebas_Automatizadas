@@ -55,3 +55,7 @@ Feature: Buy Products
     | Padded Socks           | 0        |
     | Hiking Boots           | 0        |
     | Back Country Shorts    | 0       |
+
+  Scenario: Place a Empty order
+  When Click on the Place and orden Button
+  Then I should see an alert "Please Order Something First" 
