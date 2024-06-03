@@ -47,4 +47,11 @@ Feature: Buy Products
     | Hiking Boots           | 1        |
     | Back Country Shorts    | 2        |
   And Click on the Reset form Button
-  Then quantity of all the products must be "0"
+  Then quantity of all the products must be :
+     | Product Name           | Quantity |
+    | 3 Person Dome Tent    | 0       |
+    | External Frame Backpack| 0        |
+    | Glacier Sun Glasses    | 0        |
+    | Padded Socks           | 0        |
+    | Hiking Boots           | 0        |
+    | Back Country Shorts    | 0       |

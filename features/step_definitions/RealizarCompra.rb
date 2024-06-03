@@ -19,7 +19,6 @@ When('Click on the Reset form Button') do
     find('body > form > table > tbody > tr:nth-child(3) > td > div > center > table > tbody > tr > td > p > input[type=reset]:nth-child(1)').click
 end
 
-
 When('I update the quantities of the following products:') do |table|
     table.hashes.each do |row|
         product_name = row['Product Name']
@@ -28,16 +27,6 @@ When('I update the quantities of the following products:') do |table|
     end
 end
 
-# Then('the TotalAmount should be {string}') do |expected_total|
-
-#     actual_total = find(:xpath, "/html/body/form/table/tbody/tr[1]/td/div/center/table/tbody/tr[6]/td[2]").text
-
-#     if actual_total == expected_total
-#         puts "El valor del total es correcto: #{actual_total}"
-#     else
-#         puts "El valor del total es incorrecto. Se esperaba #{expected_total} pero se encontró #{actual_total}"
-#     end
-# end
 Then('the TotalAmount should be {string}') do |expected_total|
     # Encuentra la última fila de la tabla
     actual_total = find('body > form > table > tbody > tr:nth-child(1) > td > div > center > table > tbody > tr:last-child > td:nth-child(2)').text
@@ -46,6 +35,13 @@ Then('the TotalAmount should be {string}') do |expected_total|
         puts "El valor del total es correcto: #{actual_total}"
     else
         puts "El valor del total es incorrecto. Se esperaba #{expected_total} pero se encontró #{actual_total}"
+    end
+end
+Then('quantity of all the products must be :') do |table|
+    table.hashes.each do |row|
+        product_name = row['Product Name']
+        quantity = row['Quantity']
+        check_product_quantity(product_name, quantity)
     end
 end
 def update_product_quantity(product_name, new_quantity)
@@ -61,4 +57,17 @@ counter = 2
         end
         counter += 1
     end
+end
+def check_product_quantity(product_name, quantity)
+    counter = 2
+        while counter < 7
+            row_selector = "body > form > table > tbody > tr:nth-child(#{counter}) > td > div > center > table > tbody > tr"
+            row = find(:css, row_selector, text: product_name)
+            if row.visible?
+                last_column_cell = row.find('td:last-child input[type="text"]')
+                expect(last_column_cell.value).to eq(quantity)
+                break
+            end
+            counter += 1
+        end
 end
