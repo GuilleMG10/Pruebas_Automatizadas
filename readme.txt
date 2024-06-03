@@ -1,1 +1,5 @@
 cucumber features\1prueba.feature
+cucumber features\NavegacionPagina.feature
+cucumber features\VisualizarProductos.feature
+cucumber features\BillInformation.feature
+cucumber features\RealizarCompra.feature
