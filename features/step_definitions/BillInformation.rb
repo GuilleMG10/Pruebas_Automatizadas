@@ -1,3 +1,3 @@
-Given('I am on the Google homepage') do
+Given('e') do
     visit('/')
 end

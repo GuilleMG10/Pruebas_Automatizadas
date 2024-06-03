@@ -2,16 +2,15 @@ Feature: As a internet user
          I want to use the GMO OnLine Catalog
          so I test that it works correctly
 
-    Background:
-      Given I am on GMO OnLine Catalog page
+      
 
 Scenario: Search for the GMO OnLine Catalog       
   Given I am on the Google homepage
   When I search for "GMO OnLine - Welcome to Green Mountain Outpost"
   Then I will click the "GMO OnLine - Welcome to Green Mountain Outpost" link
 
-@cc
-Scenario Outline: See for the GMO OnLine Catalog
+Scenario Outline: Click all the buttons in Home page
+  Given I am on GMO OnLine Catalog page
   When Press the "<name_button>"     
   Then I should see title text "<title>" in "<css_selector>"
 
