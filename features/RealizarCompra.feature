@@ -7,14 +7,7 @@ Feature: Buy Products
    Given I am on the GMO 
    When I click the button Enter GMO OnLine button
 
-
-
-  Scenario: Select one product
-   
-    When I update the quantity of "3 Person Dome Tent" to "5"
-    Then the quantity for "3 Person Dome Tent" should be "5"
-@cc
-    Scenario Outline: Select Products
+  Scenario Outline: Select Products
 
     When I update the quantity of "<product_name>" to "<quantity>"
     And Click on the Place and orden Button
@@ -29,4 +22,29 @@ Feature: Buy Products
     | Hiking Boots         | 1        |$ 120.4
     | Back Country Shorts  | 2        |$ 57.39
 
- 
+
+ Scenario: Select Multiple Products
+
+  When I update the quantities of the following products:
+    | Product Name           | Quantity |
+    | 3 Person Dome Tent    | 2        |
+    | External Frame Backpack| 1        |
+    | Glacier Sun Glasses    | 3        |
+    | Padded Socks           | 4        |
+    | Hiking Boots           | 1        |
+    | Back Country Shorts    | 2        |
+  And Click on the Place and orden Button
+  Then the TotalAmount should be "$ 1289.84"
+
+  Scenario: Reset Products
+
+  When I update the quantities of the following products:
+    | Product Name           | Quantity |
+    | 3 Person Dome Tent    | 2        |
+    | External Frame Backpack| 1        |
+    | Glacier Sun Glasses    | 3        |
+    | Padded Socks           | 4        |
+    | Hiking Boots           | 1        |
+    | Back Country Shorts    | 2        |
+  And Click on the Reset form Button
+  Then quantity of all the products must be "0"
