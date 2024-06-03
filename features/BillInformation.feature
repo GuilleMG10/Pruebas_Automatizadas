@@ -71,4 +71,4 @@ Scenario: Fill out Bill To information with incorrect card data
     And I enter "03/25" as the Expiration date
     And I check the Same as Bill To checkbox
     And I click Place the Order button
-    Then the order should be accepted
+    Then I should see an alert with the message "Please enter a valid card number of the form '1234-1234-1234-1234' in this field."

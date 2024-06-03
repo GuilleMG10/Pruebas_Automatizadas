@@ -50,3 +50,10 @@ Then('the order should be accepted') do
     expected_text = find('body > h4 > font').text
     expect(expected_text).to eq('Thank you for shopping with Green Mountain Outpost')
 end
+
+Then('I should see an alert with the message {string}') do |expected_message|
+    alert = page.driver.browser.switch_to.alert
+    actual_message = alert.text
+    expect(actual_message).to eq(expected_message)
+    alert.accept
+  end
