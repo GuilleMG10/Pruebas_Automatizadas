@@ -57,7 +57,7 @@ Scenario: Fill out Bill To information correctly (check card number format)
     And I click Place the Order button
     Then the order should be accepted
 
-Scenario: Fill out Bill To information with incorrect card data
+Scenario: Fill out Bill To information with incorrect card number
     When I fill in the Bill To section with the following details:
         | Name    | Juan    |
         | Address | Micasa    |
@@ -72,3 +72,19 @@ Scenario: Fill out Bill To information with incorrect card data
     And I check the Same as Bill To checkbox
     And I click Place the Order button
     Then I should see an alert with the message "Please enter a valid card number of the form '1234-1234-1234-1234' in this field."
+
+Scenario: Fill out Bill To information with incorrect card expiration format
+    When I fill in the Bill To section with the following details:
+        | Name    | Juan    |
+        | Address | Micasa    |
+        | City    | nyc      |
+        | State   | New York      |
+        | Zip     | 30000         |
+        | Phone   | 555-555-5555  |
+        | E-mail  | juan@example.com |
+    And I select "Visa" from the Credit Card combo box
+    And I enter "1234567891234567" as the Card Number
+    And I enter "03-25" as the Expiration date
+    And I check the Same as Bill To checkbox
+    And I click Place the Order button
+    Then I should see an alert with the message "Please enter a valid date of the form 'MM/YY' in this field."

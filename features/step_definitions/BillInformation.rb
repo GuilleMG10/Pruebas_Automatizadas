@@ -56,4 +56,4 @@ Then('I should see an alert with the message {string}') do |expected_message|
     actual_message = alert.text
     expect(actual_message).to eq(expected_message)
     alert.accept
-  end
+end
