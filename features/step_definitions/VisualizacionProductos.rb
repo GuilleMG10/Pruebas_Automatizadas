@@ -26,3 +26,21 @@ Then('I should see details {string} of selected product {string}') do |product_d
   puts "ONLY FOR TEST PURPOSES: #{expected_text}"
   expect(expected_text).to eq(product_details)
 end
+
+Then('I should see details {string} of product {string}') do |product_details, product_name|
+
+  product_selectors = {
+    "3 Person Dome Tent" => 'body > p:nth-child(4) > font > em',
+    "External Frame Backpack" => 'body > p:nth-child(14) > font > em',
+    "Glacier Sun Glasses" => 'body > p:nth-child(24) > font > em',
+    "Padded Socks" => 'body > p:nth-child(34) > font > em',
+    "Hiking Boots" => 'body > p:nth-child(44) > font > em',
+    "Back Country Shorts" => 'body > p:nth-child(54) > font > em'
+  }
+
+  css_selector = product_selectors[product_name]
+  
+  expected_text = find(css_selector).text
+  puts "ONLY FOR TEST PURPOSES: #{expected_text}"
+  expect(expected_text).to eq(product_details)
+end
